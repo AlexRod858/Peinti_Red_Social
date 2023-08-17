@@ -53,13 +53,7 @@ Route::post('/actualizar_foto', [ProfileController::class, 'updatePhoto'])
 //
 /////////////////////////////////////
 /////////////////////////////////////
-Route::get('/mensajes', [MensajeController::class, 'mensajes'])
-    ->middleware(['auth', 'verified'])
-    ->name('mensajes');
 
-Route::get('/mensajes/{id}', [MensajeController::class, 'verMensajesConUsuario'])
-    ->middleware(['auth', 'verified'])
-    ->name('mensajes.conUsuario');
 
 /////////////////////////////////////
 /////////////////////////////////////
