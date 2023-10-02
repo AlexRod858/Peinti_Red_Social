@@ -7,7 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ExperienciaController;
 use App\Http\Controllers\EducacionController;
 use App\Http\Controllers\TablonController;
-use App\Http\Controllers\MensajeController;
+use App\Http\Controllers\PublicacionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,7 +70,7 @@ Route::post('/enviar-solicitud/{id}', [UserController::class, 'enviarSolicitudAm
     ->name('enviar_solicitud_amistad');
 /////////////////////////////////////
 /////////////////////////////////////
-Route::get('/obras', [UserController::class, 'obras'])
+Route::get('/obras', [PublicacionController::class, 'obras'])
     ->middleware(['auth', 'verified'])
     ->name('obras');
 /////////////////////////////////////
@@ -94,14 +94,17 @@ Route::post('/enviar-mensaje', [TablonController::class, 'enviarMensaje'])
     ->name('enviar_mensaje');
 /////////////////////////////////////
 /////////////////////////////////////
+/////////////////////////////////////
+/////////////////////////////////////
 
+Route::get('/publicacion/{id}', [PublicacionController::class, 'verPublicacion'])
+    ->middleware(['auth', 'verified'])
+    ->name('ver_publicacion');
 
-
-
-// Route::get('/publicacion/{id}', [UserController::class, 'verPublicacion'])
-// ->middleware(['auth', 'verified'])
-// ->name('ver_publicacion');
-// 
+/////////////////////////////////////
+/////////////////////////////////////
+/////////////////////////////////////
+/////////////////////////////////////
 Route::post('/actualizar-estado', [UserController::class, 'actualizarEstado'])->name('actualizar-estado');
 //
 // Route::get('/show', function () {

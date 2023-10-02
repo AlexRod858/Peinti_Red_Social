@@ -19,7 +19,7 @@
             <div>
                 <a class="flex items-center" href="/">
                     <x-application-logo class="w-20 h-20 fill-current text-white" />
-                    <h2 class="text-6xl pl-3 text-white">PAINTIST</h2>
+                    <h2 class="text-6xl pl-3 text-white">PEINTI</h2>
                 </a>
             </div>
 

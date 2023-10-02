@@ -7,12 +7,12 @@ use Illuminate\Support\Collection;
 //
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
-use App\Models\Publicacion;
 use App\Models\Amistad;
 use App\Models\Educacion;
 use App\Models\Experiencia;
-use App\Models\Mensaje;
+use App\Models\Reaccion;
 use App\Models\Tablon;
+use App\Models\Publicacion;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
@@ -61,7 +61,7 @@ class UserController extends Controller
 
         // Obtener las publicaciones de los amigos del usuario realizadas en la última semana
         $publicacionesAmigos = Publicacion::whereIn('usuario_id', $amigosIDs)
-            ->where('created_at', '>=', $haceUnaSemana)
+            // ->where('created_at', '>=', $haceUnaSemana)
             ->orderByDesc('created_at')
             ->get();
         ////////////////////////////////////////////////////////
@@ -83,12 +83,12 @@ class UserController extends Controller
         ////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////
 
-
-
+        $me_gusta = Reaccion::all();
+        $favorito = Reaccion::all();
         ////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////
         // dd($amigosIDs);
-        return view('dashboard', compact('nombre', 'apellido1', 'apellido2', 'invitaciones', 'estado', 'visitas', 'estudios', 'experiencias', 'publicacionesAmigos', 'amigosDeAmigos', 'fotoperfil'));
+        return view('dashboard', compact('nombre', 'apellido1', 'apellido2', 'invitaciones', 'estado', 'visitas', 'estudios', 'experiencias', 'publicacionesAmigos', 'amigosDeAmigos', 'fotoperfil','me_gusta','favorito'));
     }
 
 
@@ -171,7 +171,7 @@ class UserController extends Controller
     }
 
 
- 
+
     /////////////////////////////////////////////////
     /////////////////////////////////////////////////
     //////////////////  G E N T E  //////////////////
@@ -235,24 +235,7 @@ class UserController extends Controller
             ->with('error', 'Error al eliminar amigo. La amistad no existe.');
     }
 
-    /////////////////////////////////////////////////
-    /////////////////////////////////////////////////
-    //////////////////  O B R A S  //////////////////
-    /////////////////////////////////////////////////
 
-    public function obras()
-    {
-        $user = Auth::user();
-        // Obtener las publicaciones del usuario logueado
-        $publicaciones = Publicacion::where('usuario_id', $user->id)
-            ->get();
-
-        return view('obras', compact('publicaciones'));
-    }
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////
     /////////////////////////////////////////////////
     /////////////////////////////////////////////////
     /////////////////////////////////////////////////
@@ -262,9 +245,7 @@ class UserController extends Controller
     /////////////////////////////////////////////////
     /////////////////////////////////////////////////
     /////////////////////////////////////////////////
-    /////////////////////////////////////////////////
-    /////////////////////////////////////////////////
-    /////////////////////////////////////////////////
+
 
 
     public function verPerfil($id)
@@ -273,12 +254,15 @@ class UserController extends Controller
         // Obtener el usuario logueado
         $user = Auth::user();
 
+
         // Obtener el usuario correspondiente al ID proporcionado
         $userAmigo = User::find($id);
         // Verificar si el usuario existe
         if (!$userAmigo) {
             abort(404); // Mostrar página de error 404 si el usuario no existe
         }
+        // Incrementar el contador de visitas
+        $userAmigo->increment('num_visitas');
 
         // Obtener la información asociada al usuario
         $miFotoperfil = $user->fotoperfil;
