@@ -26,8 +26,8 @@ class Publicacion extends Model
     }
 
     // /////////////////////////
-    // public function getPublicacionUrl()
-    // {
-    //     return route('publicacion.show', $this->id);
-    // }
+    public function reacciones()
+    {
+        return $this->hasMany(Reaccion::class, 'publicacion_id');
+    }
 }

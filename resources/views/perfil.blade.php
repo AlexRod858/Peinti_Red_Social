@@ -29,7 +29,7 @@
                                 <div class="relative w-full max-w-md px-4 h-full md:h-auto">
 
                                     <!-- Modal content -->
-                                    <div class="bg-indigo-50 rounded-lg shadow relative dark:bg-gray-700">
+                                    <div class="bg-indigo-50 rounded-lg shadow relative dark:bg-gray-700  border-2 border-slate-800">
 
                                         <!-- Botón 'X' -->
                                         <div class="flex justify-end p-2">
@@ -102,7 +102,7 @@
                                 <div class="relative w-full max-w-md px-4 h-full md:h-auto">
 
                                     <!-- Modal content -->
-                                    <div class="bg-indigo-50 rounded-lg shadow relative dark:bg-gray-700">
+                                    <div class="bg-indigo-50 rounded-lg shadow relative dark:bg-gray-700   border-2 border-slate-800">
 
                                         <!-- Botón 'X' -->
                                         <div class="flex justify-end p-2">

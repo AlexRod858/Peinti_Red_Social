@@ -24,6 +24,9 @@ return new class extends Migration
             $table->string('apellido2');
             $table->integer('num_visitas');
             $table->string('estado')->nullable();
+            // 
+            // $table->integer('publi_fav')->nullable();
+            // 
             $table->integer('invitaciones');
             $table->string('fotoperfil')
             ->nullable()

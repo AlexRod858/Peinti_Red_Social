@@ -24,6 +24,7 @@ class User extends Authenticatable
         'apellido1',
         'apellido2',
         'num_visitas',
+        'publi_fav',
         'estado',
         'invitaciones',
         'fotoperfil',

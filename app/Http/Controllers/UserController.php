@@ -61,9 +61,15 @@ class UserController extends Controller
 
         // Obtener las publicaciones de los amigos del usuario realizadas en la última semana
         $publicacionesAmigos = Publicacion::whereIn('usuario_id', $amigosIDs)
-            // ->where('created_at', '>=', $haceUnaSemana)
             ->orderByDesc('created_at')
             ->get();
+
+        // Obtener los valores de me_gusta y favoritos para cada publicación
+        foreach ($publicacionesAmigos as $publicacion) {
+            $reaccion = Reaccion::where('publicacion_id', $publicacion->id)->first();
+            $publicacion->me_gusta =  $reaccion->me_gusta;
+            $publicacion->favoritos = $reaccion->favoritos;
+        }
         ////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////
         $amigosdeamigoComoEmisor = Amistad::whereIn('usuario_id_emisor', $amigosIDs)
@@ -83,12 +89,11 @@ class UserController extends Controller
         ////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////
 
-        $me_gusta = Reaccion::all();
-        $favorito = Reaccion::all();
+        // $reacciones = Reaccion::whereIn('usuario_id', $amigosIDs)->get();
         ////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////
-        // dd($amigosIDs);
-        return view('dashboard', compact('nombre', 'apellido1', 'apellido2', 'invitaciones', 'estado', 'visitas', 'estudios', 'experiencias', 'publicacionesAmigos', 'amigosDeAmigos', 'fotoperfil','me_gusta','favorito'));
+        // dd($publicacionesAmigos);
+        return view('dashboard', compact('nombre', 'apellido1', 'apellido2', 'invitaciones', 'estado', 'visitas', 'estudios', 'experiencias', 'publicacionesAmigos', 'amigosDeAmigos', 'fotoperfil'));
     }
 
 
