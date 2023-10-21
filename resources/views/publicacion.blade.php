@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="container mt-2">
+    <div class="container mt-7 ml-7">
         <a href="../obras" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded mb-4">Volver</a>
     </div>
     <!-- AMBAS COLUMNAS -->

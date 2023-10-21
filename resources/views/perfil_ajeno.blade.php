@@ -76,17 +76,18 @@
             <div class="flex-row container">
                 <h3 class="text-xl font-bold container pl-5 my-5">Espacio personal</h3>
                 <hr>
+
                 <div class="flex items-center max-w mt-0 h-auto overflow-hidden  dark:bg-gray-800 md:flex-row md:justify-between">
                     <div class="w-full md:w-2/3 p-4 md:p-4">
-                        <h1 class="text-xl font-bold text-blue-600 dark:text-white">Mirada color esperanza</h1>
-                        <pre class="text-sm text-gray-600">18 de Sept, a las 12:04 </pre>
-                        <p class="mt-5 text-gray-800">Óleo sobre madera,<br> 25x25,<br> 2019.</p>
-                        <p class="mt-5 text-gray-800">Aprovecho para mostrar la primera de mis obras 'Colores'. Espero que os guste y dénle muchos ¡me gusta!</p>
+                        <h1 class="text-xl font-bold text-blue-600 dark:text-white"><?php echo $tituloEspacio ?></h1>
+                        <pre class="text-sm text-gray-600"><?php echo $fecha_creacionEspacio ?></pre>
+                        <p class="mt-5 text-gray-800"><?php echo $descripcionEspacio ?></p>
                     </div>
                     <div class="w-full md:w-1/3 p-4 md:p-4 flex justify-center mt-3 md:mt-0">
-                        <img class="w-full h-auto max-w-32 max-h-32" src="http://lh3.googleusercontent.com/Pd2nCUHUz4Ruc76LRh1-H0Dldl04hWSXw8P9uCYZ4TIWP7yNPArIgWlHZrf1qT9T=w454-h300-n-l64">
+                        <iframe width="320" height="240" src="<?php echo $urlEspacio ?>" frameborder="0" allowfullscreen></iframe>
                     </div>
                 </div>
+
             </div>
             <!-- ------------------------------------ -->
             <!-- ------------------------------------ -->

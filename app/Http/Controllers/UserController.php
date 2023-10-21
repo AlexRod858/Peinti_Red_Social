@@ -13,6 +13,7 @@ use App\Models\Experiencia;
 use App\Models\Reaccion;
 use App\Models\Tablon;
 use App\Models\Publicacion;
+use App\Models\Espacio_personal;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
@@ -171,8 +172,15 @@ class UserController extends Controller
         // $mensajesTablon = Tablon::where('usuario_id_receptor', $userAmigo->id)
         //     ->with('emisor') // Cargar la relación 'emisor' para evitar consultas adicionales
         //     ->get();
-
-        return view('perfil', compact('nombre', 'apellido1', 'apellido2', 'estado', 'experiencias', 'educaciones', 'tablones', 'fotoperfil'));
+        /////////////////////////////////////////
+        /////////////////////////////////////////
+        $espacioPersonal = Espacio_Personal::firstOrNew(['usuario_id' => $user->id]);
+        $tituloEspacio = $espacioPersonal->titulo;
+        $urlEspacio = $espacioPersonal->url;
+        $fecha_creacionEspacio = $espacioPersonal->created_at;
+        $descripcionEspacio = $espacioPersonal->descripcion;
+        /////////////////////////////////////////
+        return view('perfil', compact('nombre', 'apellido1', 'apellido2', 'estado', 'experiencias', 'educaciones', 'tablones', 'fotoperfil', 'tituloEspacio', 'urlEspacio', 'fecha_creacionEspacio', 'descripcionEspacio'));
     }
 
 
@@ -286,7 +294,16 @@ class UserController extends Controller
             ->with('emisor') // Cargar la relación 'emisor' para evitar consultas adicionales
             ->get();
 
+        /////////////////////////////////////////
+        /////////////////////////////////////////
+        $espacioPersonal = Espacio_Personal::firstOrNew(['usuario_id' => $userAmigo->id]);
+        $tituloEspacio = $espacioPersonal->titulo;
+        $urlEspacio = $espacioPersonal->url;
+        $fecha_creacionEspacio = $espacioPersonal->created_at;
+        $descripcionEspacio = $espacioPersonal->descripcion;
+        /////////////////////////////////////////
+
         // Pasar el usuario a la vista para mostrar sus datos en el perfil
-        return view('perfil_ajeno', compact('userAmigo', 'nombre', 'apellido1', 'apellido2', 'estado', 'experiencias', 'educaciones', 'mensajesTablon', 'miFotoperfil', 'fotoperfil'));
+        return view('perfil_ajeno', compact('userAmigo', 'nombre', 'apellido1', 'apellido2', 'estado', 'experiencias', 'educaciones', 'mensajesTablon', 'miFotoperfil', 'fotoperfil', 'tituloEspacio', 'urlEspacio', 'fecha_creacionEspacio', 'descripcionEspacio'));
     }
 }

@@ -80,7 +80,7 @@
                 </div>
                 <a href="<?= 'publicacion/' . $publicacion->id ?>">
                     <div class="flex-row container mb-5">
-                        <div class="flex items-center max-w mt-0 h-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 md:flex-row md:justify-between">
+                    <div class="flex items-center max-w mt-0 h-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 md:flex-row md:justify-between">
                             <div class="w-full md:w-2/3 p-4 md:p-4">
                                 <!-- Aquí puedes acceder a los detalles de la publicación utilizando la variable $publicacion -->
                                 <h1 class="text-xl font-bold text-blue-600 dark:text-white">{{ $publicacion->titulo }}</h1>
@@ -90,14 +90,14 @@
                                 <div class="mt-4 flex items-center space-x-4">
 
 
-                                    
+
                                     <button class="hover:text-red-700 text-red-500 font-bold flex" onclick="handleLikeClick()">
                                         <svg id="likeIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
                                         </svg>
                                         <!--  -->
                                         <p class="text-red-800">
-                                        {{ $publicacion->me_gusta }}
+                                            {{ $publicacion->me_gusta }}
                                         </p>
                                         <!--  -->
                                     </button>
@@ -108,14 +108,16 @@
                                         </svg>
                                         <!--  -->
                                         <p class="text-yellow-600">
-                                             {{ $publicacion->favoritos }}
+                                            {{ $publicacion->favoritos }}
                                             <!-- </p> -->
                                     </button>
-                                    
+
                                 </div>
                             </div>
-                            <div class="w-full md:w-1/3 p-4 md:p-4 flex justify-center mt-3 md:mt-0">
-                                <img class="w-full h-auto max-w-32 max-h-32" src="{{ $publicacion->foto }}">
+                            <div class="w-full md:w-1/3 p-4 md:p-4 float-right">
+                                <div class="w-64 h-full">
+                                    <img class="w-64 h-full object-cover" src="{{ $publicacion->foto }}">
+                                </div>
                             </div>
                         </div>
                     </div>

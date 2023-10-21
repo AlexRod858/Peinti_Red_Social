@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('usuario_id');
             $table->string('titulo')->nullable();
             $table->text('url')->nullable();
+            $table->text('descripcion')->nullable();
 
             // Claves foráneas para vincular la reacción al usuario y a la publicación correspondiente
             $table->foreign('usuario_id')->references('id')->on('users')->onDelete('cascade');

@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
         PublicacionSeeder::class,
         ComentarioSeeder::class,
         ReaccionSeeder::class,
+        Espacio_PersonalSeeder::class,
         // Agrega otros seeders aquí si los tienes
     ]);
 }

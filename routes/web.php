@@ -8,6 +8,8 @@ use App\Http\Controllers\ExperienciaController;
 use App\Http\Controllers\EducacionController;
 use App\Http\Controllers\TablonController;
 use App\Http\Controllers\PublicacionController;
+use App\Http\Controllers\Espacio_PersonalController;
+use App\Models\Espacio_personal;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,7 +48,7 @@ Route::middleware('auth')->group(function () {
 Route::get('/perfil', [UserController::class, 'perfil'])
     ->middleware(['auth', 'verified'])
     ->name('perfil');
-// 
+
 Route::post('/actualizar_foto', [ProfileController::class, 'updatePhoto'])
     ->middleware(['auth', 'verified'])
     ->name('actualizar_foto');
